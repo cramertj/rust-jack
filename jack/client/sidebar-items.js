@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Client","A client to interact with a Jack server."]]});

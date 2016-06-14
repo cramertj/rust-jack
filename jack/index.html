@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `jack` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, jack">
+
+    <title>jack - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'jack', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>jack</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-0' class='srclink' href='../src/jack/src/lib.rs.html#1-26' title='goto source code'>[src]</a></span></h1>
+<h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Client.html'
+                                  title='jack::Client'>Client</a></td>
+                           <td class='docblock short'>
+                                <p>A client to interact with a Jack server.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.ClientOptions.html'
+                                  title='jack::ClientOptions'>ClientOptions</a></td>
+                           <td class='docblock short'>
+                                <p>Option flags for opening a Jack client.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.ClientStatus.html'
+                                  title='jack::ClientStatus'>ClientStatus</a></td>
+                           <td class='docblock short'>
+                                <p>Status flags for Jack clients.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Port.html'
+                                  title='jack::Port'>Port</a></td>
+                           <td class='docblock short'>
+                                <p>An endpoint to interact with Jack data streams, for audio, midi, etc...</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.PortFlags.html'
+                                  title='jack::PortFlags'>PortFlags</a></td>
+                           <td class='docblock short'>
+                                <p>Flags for specifying port options.</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.JackControl.html'
+                                  title='jack::JackControl'>JackControl</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.JackErr.html'
+                                  title='jack::JackErr'>JackErr</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.LatencyType.html'
+                                  title='jack::LatencyType'>LatencyType</a></td>
+                           <td class='docblock short'>
+                                <p>Used by <code>JackHandler::latency()</code>.</p>
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.BACKEND_ERROR.html'
+                                  title='jack::BACKEND_ERROR'>BACKEND_ERROR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.CAN_MONITOR.html'
+                                  title='jack::CAN_MONITOR'>CAN_MONITOR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.CLIENT_ZOMBIE.html'
+                                  title='jack::CLIENT_ZOMBIE'>CLIENT_ZOMBIE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.DEFAULT_AUDIO_TYPE.html'
+                                  title='jack::DEFAULT_AUDIO_TYPE'>DEFAULT_AUDIO_TYPE</a></td>
+                           <td class='docblock short'>
+                                <p>port type for Jack&#39;s built in 32 bit floating audio.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.DEFAULT_MIDI_TYPE.html'
+                                  title='jack::DEFAULT_MIDI_TYPE'>DEFAULT_MIDI_TYPE</a></td>
+                           <td class='docblock short'>
+                                <p>port type for Jack&#39;s built in 8 bit raw midi</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.FAILURE.html'
+                                  title='jack::FAILURE'>FAILURE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.INIT_FAILURE.html'
+                                  title='jack::INIT_FAILURE'>INIT_FAILURE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.INVALID_OPTION.html'
+                                  title='jack::INVALID_OPTION'>INVALID_OPTION</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.IS_INPUT.html'
+                                  title='jack::IS_INPUT'>IS_INPUT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.IS_OUTPUT.html'
+                                  title='jack::IS_OUTPUT'>IS_OUTPUT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.IS_PHYSICAL.html'
+                                  title='jack::IS_PHYSICAL'>IS_PHYSICAL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.IS_TERMINAL.html'
+                                  title='jack::IS_TERMINAL'>IS_TERMINAL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.LOAD_FAILURE.html'
+                                  title='jack::LOAD_FAILURE'>LOAD_FAILURE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.LOAD_INIT.html'
+                                  title='jack::LOAD_INIT'>LOAD_INIT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.LOAD_NAME.html'
+                                  title='jack::LOAD_NAME'>LOAD_NAME</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.NAME_NOT_UNIQUE.html'
+                                  title='jack::NAME_NOT_UNIQUE'>NAME_NOT_UNIQUE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.NO_START_SERVER.html'
+                                  title='jack::NO_START_SERVER'>NO_START_SERVER</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.NO_SUCH_CLIENT.html'
+                                  title='jack::NO_SUCH_CLIENT'>NO_SUCH_CLIENT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.NULL_OPTION.html'
+                                  title='jack::NULL_OPTION'>NULL_OPTION</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SERVER_ERROR.html'
+                                  title='jack::SERVER_ERROR'>SERVER_ERROR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SERVER_FAILED.html'
+                                  title='jack::SERVER_FAILED'>SERVER_FAILED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SERVER_NAME.html'
+                                  title='jack::SERVER_NAME'>SERVER_NAME</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SERVER_STARTED.html'
+                                  title='jack::SERVER_STARTED'>SERVER_STARTED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SESSION_ID.html'
+                                  title='jack::SESSION_ID'>SESSION_ID</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SHM_FAILURE.html'
+                                  title='jack::SHM_FAILURE'>SHM_FAILURE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.UNKNOWN_ERROR.html'
+                                  title='jack::UNKNOWN_ERROR'>UNKNOWN_ERROR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.USE_EXACT_NAME.html'
+                                  title='jack::USE_EXACT_NAME'>USE_EXACT_NAME</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.VERSION_ERROR.html'
+                                  title='jack::VERSION_ERROR'>VERSION_ERROR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.JackHandler.html'
+                                  title='jack::JackHandler'>JackHandler</a></td>
+                           <td class='docblock short'>
+                                <p>Specifies callbacks for Jack.</p>
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.get_time.html'
+                                  title='jack::get_time'>get_time</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.set_info_callbacks.html'
+                                  title='jack::set_info_callbacks'>set_info_callbacks</a></td>
+                           <td class='docblock short'>
+                                <p>TODO: Provide better API for this functionality</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "jack";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

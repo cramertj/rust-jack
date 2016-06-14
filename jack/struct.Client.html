@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Client` struct in crate `jack`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Client">
+
+    <title>jack::Client - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>jack</a></p><script>window.sidebarCurrent = {name: 'Client', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>jack</a>::<wbr><a class='struct' href=''>Client</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-186' class='srclink' href='../src/jack/src/client.rs.html#26-30' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Client&lt;T: <a class='trait' href='../jack/trait.JackHandler.html' title='jack::JackHandler'>JackHandler</a>&gt; {
+    // some fields omitted
+}</pre><div class='docblock'><p>A client to interact with a Jack server.</p>
+
+<h1 id='example' class='section-header'><a href='#example'>Example</a></h1>
+<pre class='rust rust-example-rendered'>
+<span class='comment'>// TODO: make example</span></pre>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;T: <a class='trait' href='../jack/trait.JackHandler.html' title='jack::JackHandler'>JackHandler</a>&gt; <a class='struct' href='../jack/struct.Client.html' title='jack::Client'>Client</a>&lt;T&gt;</code></h3><div class='impl-items'><h4 id='method.name_size' class='method'><code>fn <a href='#method.name_size' class='fnname'>name_size</a>() -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></h4>
+<div class='docblock'><p>The maximum length of the Jack client name string. Unlike the &quot;C&quot; Jack
+API, this does not take into account the final <code>NULL</code> character and
+instead corresponds directly to <code>.len()</code>. This value is constant.</p>
+</div><h4 id='method.type_buffer_size' class='method'><code>unsafe fn <a href='#method.type_buffer_size' class='fnname'>type_buffer_size</a>(&amp;self, port_type: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></h4>
+<div class='docblock'><p>The buffer size of a port type</p>
+
+<h1 id='unsafe' class='section-header'><a href='#unsafe'>Unsafe</a></h1>
+<ul>
+<li>This function may only be called in a buffer size callback.</li>
+</ul>
+</div><h4 id='method.open' class='method'><code>fn <a href='#method.open' class='fnname'>open</a>(client_name: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, options: <a class='struct' href='../jack/struct.ClientOptions.html' title='jack::ClientOptions'>ClientOptions</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;Self, <a class='enum' href='../jack/enum.JackErr.html' title='jack::JackErr'>JackErr</a>&gt;</code></h4>
+<div class='docblock'><p>Opens a Jack client with the given name and options. If the client is
+successfully opened, then <code>Ok(client)</code> is returned. If there is a
+failure, then <code>Err(JackErr::ClientError(status))</code> will be returned.</p>
+
+<p>Although the client may be successful in opening, there still may be
+some errors minor errors when attempting to opening. To access these,
+check <code>Client::status()</code>.</p>
+</div><h4 id='method.close' class='method'><code>fn <a href='#method.close' class='fnname'>close</a>(self)</code></h4>
+<div class='docblock'><p>Disconnects the client from the Jack server. This does not need to
+manually be called, as the client will automatically close when the
+client object is dropped.</p>
+</div><h4 id='method.status' class='method'><code>fn <a href='#method.status' class='fnname'>status</a>(&amp;self) -&gt; <a class='struct' href='../jack/struct.ClientStatus.html' title='jack::ClientStatus'>ClientStatus</a></code></h4>
+<div class='docblock'><p>Get the status of the client.</p>
+</div><h4 id='method.name' class='method'><code>fn <a href='#method.name' class='fnname'>name</a>&lt;'a&gt;(&amp;'a self) -&gt; &amp;'a <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a></code></h4>
+<div class='docblock'><p>Get the name of the current client. This may differ from the name
+requested by <code>Client::open</code> as Jack will may rename a client if
+necessary (ie: name collision, name too long). If the name has changed,
+it should be indicated by <code>Client::status</code>.</p>
+</div><h4 id='method.uuid' class='method'><code>fn <a href='#method.uuid' class='fnname'>uuid</a>&lt;'a&gt;(&amp;'a self) -&gt; &amp;'a <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a></code></h4>
+<div class='docblock'><p>Get the uuid of the current client.</p>
+</div><h4 id='method.thread_id' class='method'><code>fn <a href='#method.thread_id' class='fnname'>thread_id</a>&lt;P&gt;(&amp;self) -&gt; P</code></h4>
+<div class='docblock'><p>Get the pthread ID of the thread running the Jack client side code.</p>
+
+<h1 id='todo' class='section-header'><a href='#todo'>TODO</a></h1>
+<ul>
+<li>Integrate a pthread library</li>
+<li>Implement, do people need this though?</li>
+</ul>
+</div><h4 id='method.name_by_uuid' class='method'><code>fn <a href='#method.name_by_uuid' class='fnname'>name_by_uuid</a>&lt;'a&gt;(&amp;'a self, uuid: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;'a <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;</code></h4>
+<div class='docblock'><p>Get the name of the client with the UUID specified by <code>uuid</code>. If the
+client is found then <code>Some(name)</code> is returned, if not, then <code>None</code> is
+returned.</p>
+</div><h4 id='method.uuid_by_name' class='method'><code>fn <a href='#method.uuid_by_name' class='fnname'>uuid_by_name</a>&lt;'a&gt;(&amp;'a self, name: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;'a <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;</code></h4>
+<div class='docblock'><p>Get the uuid of the client with the name specified by <code>name</code>. If the
+client is found then <code>Some(uuid)</code> is returned, if not, then <code>None</code> is
+returned.</p>
+</div><h4 id='method.ports' class='method'><code>fn <a href='#method.ports' class='fnname'>ports</a>(&amp;self, port_name_pattern: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;, type_name_pattern: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;, flags: <a class='struct' href='../jack/struct.PortFlags.html' title='jack::PortFlags'>PortFlags</a>) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;</code></h4>
+<div class='docblock'><p>Returns a vector of ports that match the specified arguments</p>
+
+<p><code>port_name_pattern</code> - A regular expression used to select ports by
+name. If <code>None</code> or zero lengthed, no selection based on name will be
+carried out.</p>
+
+<p><code>type_name_pattern</code> - A regular expression used to select ports by
+type. If <code>None</code> or zero lengthed, no selection based on type will be
+carried out.</p>
+
+<p><code>flags</code> - A value used to select ports by their flags. Use
+<code>PortFlags::empty()</code> for no flag selection.</p>
+</div><h4 id='method.port_by_name' class='method'><code>fn <a href='#method.port_by_name' class='fnname'>port_by_name</a>(&amp;self, port_name: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../jack/struct.Port.html' title='jack::Port'>Port</a>&gt;</code></h4>
+<div class='docblock'><p>Get a <code>Port</code> by its port name.</p>
+</div><h4 id='method.port_by_id' class='method'><code>fn <a href='#method.port_by_id' class='fnname'>port_by_id</a>(&amp;self, port_id: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../jack/struct.Port.html' title='jack::Port'>Port</a>&gt;</code></h4>
+<div class='docblock'><p>Get a <code>Port</code> by its port id.</p>
+</div><h4 id='method.activate' class='method'><code>fn <a href='#method.activate' class='fnname'>activate</a>(&amp;mut self, handler: T) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a class='enum' href='../jack/enum.JackErr.html' title='jack::JackErr'>JackErr</a>&gt;</code></h4>
+<div class='docblock'><p>Tell the Jack server that the program is ready to start processing
+audio. Jack will call the methods specified by the <code>JackHandler</code> trait, from <code>handler</code>.</p>
+
+<p>On failure, either <code>Err(JackErr::CallbackRegistrationError)</code> or
+<code>Err(JackErr::ClientActivationError)</code> is returned.</p>
+
+<p><code>handler</code> is consumed, but it is returned when <code>Client::deactivate</code> is
+called.</p>
+</div><h4 id='method.deactivate' class='method'><code>fn <a href='#method.deactivate' class='fnname'>deactivate</a>(&amp;mut self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;T&gt;, <a class='enum' href='../jack/enum.JackErr.html' title='jack::JackErr'>JackErr</a>&gt;</code></h4>
+<div class='docblock'><p>Tell the Jack server to remove this client from the process graph. Also,
+disconnect all ports belonging to it since inactive clients have no port
+connections.</p>
+
+<p>The <code>handler</code> that was used for <code>Client::activate</code> is returned on
+success. Its state may have changed due to Jack calling its methods.</p>
+</div><h4 id='method.register_port' class='method'><code>fn <a href='#method.register_port' class='fnname'>register_port</a>(&amp;mut self, port_name: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, port_type: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, flags: <a class='struct' href='../jack/struct.PortFlags.html' title='jack::PortFlags'>PortFlags</a>, buffer_size: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../jack/struct.Port.html' title='jack::Port'>Port</a>, <a class='enum' href='../jack/enum.JackErr.html' title='jack::JackErr'>JackErr</a>&gt;</code></h4>
+<div class='docblock'><p>Create a new port for the client. This is an object used for moving data
+of any type in or out of the client. Ports may be connected in various
+ways.</p>
+
+<p>Each port has a short name. The port&#39;s full name contains the name of
+the client concatenated with a colon (:) followed by its short
+name. <code>Port::name_size()</code> is the maximum length of the full
+name. Exceeding that will cause the port registration to fail and return
+<code>Err(())</code>.</p>
+
+<p>The <code>port_name</code> must be unique among all ports owned by this client. If
+the name is not unique, the registration will fail.</p>
+
+<p>All ports have a type, which may be any non empty string, passed as an
+argument. Some port types are built into the Jack API, like
+<code>DEFAULT_AUDIO_TYPE</code> and <code>DEFAULT_MIDI_TYPE</code>.</p>
+
+<h1 id='parameters' class='section-header'><a href='#parameters'>Parameters</a></h1>
+<p><code>port_name</code> - non-empty short name for the new port (not including the
+lading &quot;client_name:&quot;). Must be unique.</p>
+
+<p><code>port_type</code> - port type name. If longer than <code>Port::type_size()</code>, only
+that many characters are significant.</p>
+
+<p><code>flags</code> - <code>PortFlags</code> bit mask.</p>
+
+<p><code>buffer_size</code> - Must be <code>Some(n)</code> if this is not a built-in
+<code>port_type</code>. Otherwise, it is ignored.</p>
+</div><h4 id='method.is_mine' class='method'><code>fn <a href='#method.is_mine' class='fnname'>is_mine</a>(&amp;self, port: &amp;<a class='struct' href='../jack/struct.Port.html' title='jack::Port'>Port</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<div class='docblock'><p>Returns <code>true</code> if the port <code>port</code> belongs to this client.</p>
+</div><h4 id='method.request_monitor' class='method'><code>fn <a href='#method.request_monitor' class='fnname'>request_monitor</a>(&amp;self, port_name: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, enable_monitor: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a class='enum' href='../jack/enum.JackErr.html' title='jack::JackErr'>JackErr</a>&gt;</code></h4>
+<div class='docblock'><p>Toggle input monitoring for the port with name <code>port_name</code>.</p>
+
+<p><code>Err(JackErr::PortMonitorError)</code> is returned on failure.</p>
+
+<p>Only works if the port has the <code>CAN_MONITOR</code> flag, or else nothing
+happens.</p>
+</div><h4 id='method.connect_ports' class='method'><code>fn <a href='#method.connect_ports' class='fnname'>connect_ports</a>(&amp;self, source_port: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, destination_port: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a class='enum' href='../jack/enum.JackErr.html' title='jack::JackErr'>JackErr</a>&gt;</code></h4>
+<div class='docblock'><p>Establish a connection between two ports.</p>
+
+<p>When a connection exists, data written to the source port will be
+available to be read at the destination port.</p>
+
+<p>On failure, either a <code>PortNotFound</code> or <code>PortConnectionError</code> is returned.</p>
+
+<h1 id='preconditions' class='section-header'><a href='#preconditions'>Preconditions</a></h1>
+<ol>
+<li>The port types must be identical</li>
+<li>The port flags of the <code>source_port</code> must include <code>IS_OUTPUT</code></li>
+<li>The port flags of the <code>destination_port</code> must include <code>IS_INPUT</code>.</li>
+</ol>
+</div><h4 id='method.disconnect_ports' class='method'><code>fn <a href='#method.disconnect_ports' class='fnname'>disconnect_ports</a>(&amp;self, source_port: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, destination_port: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a class='enum' href='../jack/enum.JackErr.html' title='jack::JackErr'>JackErr</a>&gt;</code></h4>
+<div class='docblock'><p>Remove a connection between two ports.</p>
+</div><h4 id='method.sample_rate' class='method'><code>fn <a href='#method.sample_rate' class='fnname'>sample_rate</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></h4>
+<div class='docblock'><p>The sample rate of the jack system, as set by the user when jackd was
+started.</p>
+</div><h4 id='method.buffer_size' class='method'><code>fn <a href='#method.buffer_size' class='fnname'>buffer_size</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></h4>
+<div class='docblock'><p>The current maximum size that will every be passed to the process
+callback.</p>
+
+<p>It should only be used <em>before</em> the client has been activated. This size
+may change,c lients that depend on it must register a buffer size
+callback so they will be notified if it does.</p>
+</div><h4 id='method.cpu_load' class='method'><code>fn <a href='#method.cpu_load' class='fnname'>cpu_load</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a></code></h4>
+<div class='docblock'><p>The current CPU load estimated by Jack.</p>
+
+<p>This is a running average of the time it takes to execute a full process
+cycle for all clients as a percentage of the real time available per
+cycle determined by the buffer size and sample rate.</p>
+</div><h4 id='method.set_freewheel' class='method'><code>fn <a href='#method.set_freewheel' class='fnname'>set_freewheel</a>(&amp;self, enable: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a class='enum' href='../jack/enum.JackErr.html' title='jack::JackErr'>JackErr</a>&gt;</code></h4>
+<div class='docblock'><p>Start/Stop Jack&#39;s &quot;freewheel&quot; mode.</p>
+
+<p>When in &quot;freewheel&quot; mode, Jack no longer waits for any external event to
+begin the start of the next process cycle. As a result, freewheel mode
+causes &quot;faster than real-time&quot; execution of a Jack graph. If possessed,
+real-time scheduling is dropped when entering freewheel mode, and if
+appropriate it is reacquired when stopping.</p>
+
+<p>IMPORTANT: on systems using capabilities to provide real-time scheduling
+(i.e. Linux Kernel 2.4), if enabling freewheel, this function must be
+called from the thread that originally called <code>self.activate()</code>. This
+restriction does not apply to other systems (e.g. Linux Kernel 2.6 or OS
+X).</p>
+</div><h4 id='method.set_buffer_size' class='method'><code>fn <a href='#method.set_buffer_size' class='fnname'>set_buffer_size</a>(&amp;self, n_frames: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a class='enum' href='../jack/enum.JackErr.html' title='jack::JackErr'>JackErr</a>&gt;</code></h4>
+<div class='docblock'><p>Change the buffer size passed to the process callback.</p>
+
+<p>This operation stops the jack engine process cycle, then calls all
+registered buffer size callback functions before restarting the process
+cycle. This will cause a gap in the audio flow, so it should only be
+done at appropriate stopping points.</p>
+</div><h4 id='method.frames_since_cycle_start' class='method'><code>fn <a href='#method.frames_since_cycle_start' class='fnname'>frames_since_cycle_start</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a></code></h4>
+<div class='docblock'><p>The estimated time in frames that has passed since the Jack server began
+the current process cycle.</p>
+</div><h4 id='method.frame_time' class='method'><code>fn <a href='#method.frame_time' class='fnname'>frame_time</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a></code></h4>
+<div class='docblock'><p>The estimated current time in frames. This function is intended for use
+in other threads (not the process callback). The return value can be
+compared with the value of <code>last_frame_time</code> to relate time in other
+threads to Jack time.</p>
+</div><h4 id='method.last_frame_time' class='method'><code>fn <a href='#method.last_frame_time' class='fnname'>last_frame_time</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a></code></h4>
+<div class='docblock'><p>The precise time at the start of the current process cycle. This
+function may only be used from the process callback, and can be used to
+interpret timestamps generated by <code>self.frame_time()</code> in other threads,
+with respect to the current process cycle.</p>
+</div><h4 id='method.cycle_times' class='method'><code>fn <a href='#method.cycle_times' class='fnname'>cycle_times</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;CycleTimes, <a class='enum' href='../jack/enum.JackErr.html' title='jack::JackErr'>JackErr</a>&gt;</code></h4>
+<div class='docblock'><p>This function may only be used from the process callback. It provides
+the internal cycle timing information as used by most of the other time
+related functions. This allows the caller to map between frame counts
+and microseconds with full precision (i.e. without rounding frame times
+to integers), and also provides e.g. the microseconds time of the start
+of the current cycle directly (it has to be computed otherwise).</p>
+
+<p><code>Err(JackErr::TimeError)</code> is returned on failure.</p>
+</div><h4 id='method.frames_to_time' class='method'><code>fn <a href='#method.frames_to_time' class='fnname'>frames_to_time</a>(&amp;self, n_frames: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a></code></h4>
+<div class='docblock'><p>The estimated time in microseconds of the specified frame time</p>
+</div><h4 id='method.time_to_frames' class='method'><code>fn <a href='#method.time_to_frames' class='fnname'>time_to_frames</a>(&amp;self, t: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a></code></h4>
+<div class='docblock'><p>The estimated time in frames for the specified system time.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl&lt;T: <a class='trait' href='../jack/trait.JackHandler.html' title='jack::JackHandler'>JackHandler</a>&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='../jack/struct.Client.html' title='jack::Client'>Client</a>&lt;T&gt;</code></h3><div class='docblock'><p>Closes the client, no need to manually call <code>Client::close()</code>.</p>
+</div><div class='impl-items'><h4 id='method.drop' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> + <a class='trait' href='../jack/trait.JackHandler.html' title='jack::JackHandler'>JackHandler</a>&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../jack/struct.Client.html' title='jack::Client'>Client</a>&lt;T&gt;</code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "jack";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

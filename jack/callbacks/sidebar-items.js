@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["JackHandler","Specifies callbacks for Jack."]]});
